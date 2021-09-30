@@ -7,6 +7,7 @@ use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Mail\OrderPlaced;
@@ -69,6 +70,8 @@ Route::get('/code', function() {
 });
 
 Route::post('/newsletter', NewsletterController::class);
+
+Route::get('/reports', [ReportController::class, 'index'])->middleware('auth')->prefix('admin')->name('report.index');
 
 Route::get('/mailable', function() {
     $order = Order::find(7);

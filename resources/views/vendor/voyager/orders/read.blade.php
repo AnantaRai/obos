@@ -176,8 +176,27 @@
                     <h3 class="panel-title">Delivery Charge</h3>
                 </div>
                 <div class="panel-body" style="padding-top:0;">
-                    <p>NPR {{$deliveryCharge}}</p>
+                    <p>{{$deliveryCharge}}</p>
                 </div>
+
+                @if (!empty($payment))
+                <div class="panel-heading" style="border-bottom:0;">
+                    <h3 class="panel-title">Payment</h3>
+                </div>
+                <div class="panel-body" style="padding-top:0;">
+                    <li>Payment Method: {{ $payment->payment_method }}</li>
+                    <li>Cardholder's Name: {{ $payment->cardholder_name }}</li>
+                    <li>Transaction ID: {{ $payment->transaction_id }}</li>
+                    <li>Amount Paid: {{ $payment->amount }}</li>
+                </div>
+                @else
+                <div class="panel-heading" style="border-bottom:0;">
+                    <h3 class="panel-title">Payment</h3>
+                </div>
+                <div class="panel-body" style="padding-top:0;">
+                    <li>Payment Method: Cash On Delivery</li>
+                </div>
+                @endif
             </div>
         </div>
     </div>

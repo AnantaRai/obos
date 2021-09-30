@@ -90,7 +90,7 @@ class CheckoutController extends Controller
             }
         }
         else {
-            $order = $this->addToOrdersTables($request, null, 'Pending');
+            $order = $this->addToOrdersTables($request, null, 'Awaiting Payment');
             // $this->addToPaymentsTable($request, 'Cash on Delivery', null, $order->id);
             if (session()->has('coupon')){
                 $this->addToCouponUsedTable($this->getUsedCouponId());
