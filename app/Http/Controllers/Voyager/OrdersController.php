@@ -74,7 +74,8 @@ class OrdersController extends VoyagerBaseController
         $products = $order->products;
         $payment = $order->payment;
         $deliveryCharge = 150;
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'products', 'deliveryCharge', 'payment'));
+        $orderId = $id;
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'products', 'deliveryCharge', 'payment', 'orderId'));
     }
 
 }

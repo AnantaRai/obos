@@ -7,7 +7,6 @@ use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Mail\OrderPlaced;
@@ -25,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
@@ -53,6 +51,7 @@ Route::get('/thankyou', [ConfirmationController::class, 'index'])->name('confirm
 Route::get('empty', function () {
     Cart::destroy();
 });
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/my-profile', [UsersController::class, 'edit'])->name('users.edit');
     Route::patch('/my-profile', [UsersController::class, 'update'])->name('users.update');
@@ -71,15 +70,12 @@ Route::get('/code', function() {
 
 Route::post('/newsletter', NewsletterController::class);
 
-Route::get('/reports', [ReportController::class, 'index'])->middleware('auth')->prefix('admin')->name('report.index');
-
 Route::get('/mailable', function() {
     $order = Order::find(7);
     return new OrderPlaced($order);
 });
 
 require __DIR__ . '/auth.php';
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
