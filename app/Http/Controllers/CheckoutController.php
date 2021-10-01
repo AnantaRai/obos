@@ -78,7 +78,7 @@ class CheckoutController extends Controller
                 if (session()->has('coupon')){
                     $this->addToCouponUsedTable($this->getUsedCouponId());
                 }
-                // Mail::send(new OrderPlaced($order));
+                Mail::send(new OrderPlaced($order));
                 // SUCCESSFUL
                 Cart::instance('default')->destroy();
                 session()->forget('coupon');
@@ -95,7 +95,7 @@ class CheckoutController extends Controller
             if (session()->has('coupon')){
                 $this->addToCouponUsedTable($this->getUsedCouponId());
             }
-                // Mail::send(new OrderPlaced($order));
+                Mail::send(new OrderPlaced($order));
                 // SUCCESSFUL
                 Cart::instance('default')->destroy();
                 session()->forget('coupon');

@@ -107,9 +107,9 @@
                 </div>
             </div>
             <hr />
-            <p class="mt-4 text-red-500">
+            {{-- <p class="mt-4 text-red-500">
                 *Currently delivery only available inside kathmandu valley
-            </p>
+            </p> --}}
         </div>
         <div class="p-4 xl:w-1/2">
             <h2 class="font-bold text-2xl mb-4 text-center">Billing Details</h2>

@@ -30,7 +30,7 @@ class CheckoutRequest extends FormRequest
             'address' => 'required',
             'street_name' => 'required',
             'payment_method' => 'required',
-            'phone' => 'required | string | size:10 | regex:/[0-9]{9}/',
+            'phone' => 'required | string | size:10 | regex:/^[0-9]+/',
             'name_on_card' => Request::instance()->payment_method == 'cod' ? 'nullable' : 'required',
         ];
     }
