@@ -31,4 +31,5 @@
     <p class="text-white text-center">
         &copy; Cake Street {{ date("Y") }}. All rights reserved.
     </p>
+    <a href="{{ route('feedback.create') }}" class="text-white text-center">Give Feedback?</a>
 </footer>

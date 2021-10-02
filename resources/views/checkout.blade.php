@@ -137,7 +137,7 @@
                 @enderror
 
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" class="
+                <input type="email" name="email" id="email" class="
                         mb-4
                         appearance-none
                         block

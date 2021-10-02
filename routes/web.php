@@ -7,6 +7,7 @@ use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\FeedBackController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Mail\OrderPlaced;
@@ -69,6 +70,9 @@ Route::get('/code', function() {
 });
 
 Route::post('/newsletter', NewsletterController::class);
+
+Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
 Route::get('/mailable', function() {
     $order = Order::find(7);
