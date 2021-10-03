@@ -27,7 +27,14 @@ class ReportController extends Controller
         $placeholders = implode(',',array_fill(0, count($product_ids), '?')); // string for the query
 
         $topProducts = Product::whereIn('id', $product_ids)->orderByRaw("field(id,{$placeholders})", $product_ids)->get();
-        return view('reports', compact('topProducts', 'products'));
+        $i=0;
+        foreach($topProducts as $topProduct) {
+            $topProduct->count = $product_count[$i];
+            $i+=1;
+        }
+
+
+        return view('reports', compact('topProducts', 'product_count'));
     }
 
     /**

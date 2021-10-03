@@ -1,6 +1,7 @@
 @extends('main') @section('title', 'My Order') @section('content')
 <main class="w-3/4 mx-auto" x-data="{ showModal: false }">
     <h1 class="font-bold text-2xl">Order #{{ $order->id }}</h1>
+    <p>Order Status: {{ $order->status }}</p>
     <hr>
     @foreach ($products as $product)
     <div class="flex p-4">
@@ -45,7 +46,7 @@
             </div>
             <div>
                 <p class="font-bold">Payment Details</p>
-                @if ($order->status == "Pending")
+                @if (empty($order->payment))
                 <p class="text-sm">Payment method: Cash on Delivery</p>
                 @else
                 <p class="text-sm">Payment method: {{ $order->payment->payment_method }}</p>

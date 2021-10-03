@@ -33,6 +33,9 @@
             class="hidden-xs hidden-sm">{{ __('voyager::generic.return_to_list') }}</span>
     </a>
     @endcan
+    <a href="{{ route('order.print', $orderId) }}" class="btn btn-warning">
+        <i class="glyphicon glyphicon-list"></i> <span class="hidden-xs hidden-sm">Print</span>
+    </a>
 </h1>
 @include('voyager::multilingual.language-selector')
 @stop

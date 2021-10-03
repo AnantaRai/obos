@@ -18,7 +18,6 @@
 </head>
 
 <body>
-    <a href="/pdf/download">Download</a>
     <h1 class="text-center font-bold text-4xl mb-4">Cake Street</h1>
     <h4 class="text-center">Order Details</h4>
     <table class="table-auto border-collapse border w-3/4 mx-auto mb-8">

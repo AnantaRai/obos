@@ -10,9 +10,11 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\FeedBackController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReportController;
 use App\Mail\OrderPlaced;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +72,16 @@ Route::get('/code', function() {
 });
 
 Route::post('/newsletter', NewsletterController::class);
+
+Route::get('/admin/print/{orderId}', function($id) {
+        $order = Order::find($id);
+        $products = $order->products;
+        $payment = $order->payment;
+        $deliveryCharge = 150;
+        return view('pdf', compact('order', 'products', 'payment','deliveryCharge'));
+})->middleware('admin.user')->name('order.print');
+
+Route::get('/admin/report', [ReportController::class, 'index'])->middleware('admin.user')->name('report.index');
 
 Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');

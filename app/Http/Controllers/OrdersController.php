@@ -14,7 +14,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-         $orders = auth()->user()->orders()->where('status', 'Pending')->orWhere('status', 'Confirmed')->with('products')->orderBy('created_at', 'desc')->get();
+        //  $orders = auth()->user()->orders()->where('status', 'Awaiting Payment')->orWhere('status', 'Confirmed')->with('products')->orderBy('created_at', 'desc')->get();
+         $orders = auth()->user()->orders()->with('products')->orderBy('created_at', 'desc')->get();
         return view('my-orders', compact('orders'));
     }
 

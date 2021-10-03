@@ -15,16 +15,35 @@
 
 @section('content')
 @if ($topProducts->isNotEmpty())
-@foreach ($topProducts as $product)
-<div style="width: 75%; margin: 0 auto;">
-    <img src="{{ productImage($product->image) }}" style="width: 200px" alt="product">
-    <p>{{ $product->name }}</p>
-</div>
-<hr>
-@endforeach
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity Sold</th>
+            <th scope="col">Sales Amount</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($topProducts as $key => $product)
+        <tr>
+            <td>{{ $key + 1 }}</td>
+            <td>
+                <img src="{{ productImage($product->image) }}" style="width: 200px" alt="product">
+                <p>Product Name: {{ $product->name }}</p>
+                <p>Product Price: NPR {{ $product->price }}</p>
+
+            </td>
+            <td>{{ $product->count }}</td>
+            <td>NPR {{ $product->count * $product->price }}</td>
+        </tr>
+
+        @endforeach
+    </tbody>
+</table>
 @else
 <h1>No Products yet</h1>
 @endif
-
 
 @stop
